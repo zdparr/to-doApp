@@ -5,44 +5,40 @@
         
         <!-- Local style sheet -->
         <link rel="stylesheet" href="index.css">
-        
-        <!-- Bootstrap -->
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-        
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Hepta+Slab&display=swap" rel="stylesheet">
-        
+                
     </head>
     
     <body>
         
-        <div id="wrapper" class="container">
+        <h2>To Do App</h2>
+        
+        <h4>What do you need to do?</h4>
+        
+        <input id="userInput" type="text" placeholder="i.e. pick up groceries">
+        
+        <div id="listArea"></div>
+        
+        <script>
+            document.getElementById("userInput").addEventListener("keypress", handleEnter);
             
-            <!-- Title bar -->
-            <div id="titleBar">
-                <div>
-                    <img id="logo" src="https://www.trzcacak.rs/myfile/detail/358-3589237_checkbox-list-to-do-svg-png-icon-free.png">
-                </div>
+            function addTask() {
+                var newTask = document.createElement("div");
+                var newInput = document.createTextNode(document.getElementById("userInput").value);
                 
-                <div id="title">
-                    <h2>To-Do App</h2>
-                </div>
+                newTask.appendChild(newInput);
+                document.getElementById("listArea").appendChild(newTask);
                 
-                <div id="slogan">
-                    <p>Create, Track, and Complete tasks easily!</p>
-                </div>
-            </div>
+                document.getElementById("userInput").value = "";
+            }
             
-            <!-- Main site function box -->
-            <form id="userForm">
-                <div class="form-group">
-                    <label for="userInput">What needs to get done?</label>
-                    <input type="text" class="form-control" id="userInput" placeholder="i.e Buy milk">
-                </div>
-            </form>
-            
-        </div>
+            function handleEnter(e) {
+                if (e.keyCode == 13) {
+                    
+                    addTask();
+                    
+                }
+            }
+        </script>
         
     </body>
 </html>
