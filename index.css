@@ -1,11 +1,11 @@
 body {
-    font-family: 'Hepta Slab', serif;
-}
-
-li {
-    list-style-type: none;
+    font-family: serif;
 }
 
 #userInput {
     border: 1px solid black;
+}
+
+.strike {
+    text-decoration: line-through;
 }

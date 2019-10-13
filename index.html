@@ -16,18 +16,24 @@
         
         <input id="userInput" type="text" placeholder="i.e. pick up groceries">
         
-        <ul id="listArea"></ul>
+        <div id="listArea"></div>
         
         <script>
             // Detect enter in input
             document.getElementById("userInput").addEventListener("keypress", handleEnter);
             
             
-            // Group of ul
+            // List area
             var listArea = document.getElementById("listArea");
             
             // Detect delete button
-            listArea.addEventListener("click", deleteTask);
+            listArea.addEventListener("click", handleClick);
+            
+            // Generate random number for task id
+            function randomNumber () {
+                var randomNumber = Math.floor(Math.random() * 9000) + 1000;
+                return randomNumber;
+            }
             
             // Add task to task list
             function addTask() {
@@ -35,16 +41,22 @@
                 // Get user input
                 var userInput = document.getElementById("userInput").value;
                 
-                // Create new li, add class, add input
-                var newTask = document.createElement("li");
-                newTask.className = 'listItem';
-                newTask.appendChild(document.createTextNode(userInput));
+                // Create new div, add id, add class, add input
+                var newTask = document.createElement("div");
+                newTask.className = 'taskDiv';
                 
                 // Add item to list
                 listArea.appendChild(newTask);
                 
                 // Clear input after enter
                 document.getElementById("userInput").value = "";
+                
+                // Add text button
+                var textButton = document.createElement('button');
+                textButton.className = "btn listItem task"
+                textButton.id = "task" + randomNumber();
+                textButton.appendChild(document.createTextNode(userInput));
+                newTask.appendChild(textButton);
                 
                 // Add delete button
                 var deleteButton = document.createElement('button');
@@ -63,11 +75,18 @@
             }
             
             // Delete tasks
-            function deleteTask(e){
+            function handleClick(e){
                 if (e.target.classList.contains("deleteTask")) {
                     var item = e.target.parentElement;
                     listArea.removeChild(item);
                 }
+                
+                if (e.target.classList.contains("listItem")) {
+                    var id = e.target.id;
+                    var task = document.getElementById(id);
+                    task.className = "strike";
+                }
+                
             }
             
             
