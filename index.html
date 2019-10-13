@@ -5,18 +5,36 @@
         
         <!-- Local style sheet -->
         <link rel="stylesheet" href="index.css">
+        
+        <!-- Bootstrap -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+        
+        <!-- Google font -->
+        <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed&display=swap" rel="stylesheet">
                 
     </head>
     
     <body>
         
-        <h2>To Do App</h2>
+        <div class="container" id="wrapper">
         
-        <h4>What do you need to do?</h4>
+            <div class="jumbotron">
+                <img id="logo" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQJqkj1a8l_dH215jHQQCz91Ov4w4KTLKB0ZSlie35p4AYs01SgRw">
+                
+                <h2 class="display-2" id="title">To Do App</h2>
+                
+            </div>
+            
+            <h4 class="text-muted" id="question">What do you need to do?</h4>
+
+            <input id="userInput" type="text" placeholder="i.e. pick up groceries">
+            
+            <p id="instruction" class="text-muted">Click the task to mark off the list. Click the <span class="bold">X</span> to delete.</p>
+
+            <div id="listArea"></div>
         
-        <input id="userInput" type="text" placeholder="i.e. pick up groceries">
-        
-        <div id="listArea"></div>
+        </div>
         
         <script>
             // Detect enter in input
@@ -26,7 +44,7 @@
             // List area
             var listArea = document.getElementById("listArea");
             
-            // Detect delete button
+            // Detect button click
             listArea.addEventListener("click", handleClick);
             
             // Generate random number for task id
@@ -53,14 +71,14 @@
                 
                 // Add text button
                 var textButton = document.createElement('button');
-                textButton.className = "btn listItem task"
+                textButton.className = "listItem task textButton"
                 textButton.id = "task" + randomNumber();
                 textButton.appendChild(document.createTextNode(userInput));
                 newTask.appendChild(textButton);
                 
                 // Add delete button
                 var deleteButton = document.createElement('button');
-                deleteButton.className = "btn deleteTask"
+                deleteButton.className = "deleteTask deleteButton"
                 deleteButton.appendChild(document.createTextNode("X"));
                 newTask.appendChild(deleteButton);
             }
@@ -84,7 +102,7 @@
                 if (e.target.classList.contains("listItem")) {
                     var id = e.target.id;
                     var task = document.getElementById(id);
-                    task.className = "strike";
+                    task.classList.add("strike");
                 }
                 
             }

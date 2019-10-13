@@ -1,11 +1,81 @@
 body {
-    font-family: serif;
+    font-family: 'Roboto Condensed', serif;
+    
+}
+
+.jumbotron {
+    margin-top: 10px;
+    background-color: #7f92b0 !important;
+}
+
+img {
+    border-radius: 5px;
+    float: left;
+    margin-top: 30px;
+}
+
+button {
+    margin: 5px 5px !important;
+    border-radius: 10px;
+    border: 1px solid gray;
+}
+
+#logo {
+    height: 100px;
+}
+
+.container {
+    text-align: center;
+}
+
+#title {
+    margin-top: 20px;
+    font-weight: bold;
+}
+
+#question {
+    font-size: 38px;
+    margin-top: 25px 0 25px 0;
 }
 
 #userInput {
     border: 1px solid black;
+    border-radius: 5px;
+    width: 350px;
+    margin-top: 25px;
 }
 
 .strike {
     text-decoration: line-through;
+}
+
+#listArea {
+    margin-top: 15px;
+    border-top-right-radius: 0px !important;
+}
+
+.textButton {
+    width: 315px;
+    border-radius: 5px;
+    border: 1px solid gray;
+    background-color: #cfd6e3;
+    font-size: 120%;
+
+}
+
+.deleteButton {
+    border-radius: 5px;
+    border: 1px solid gray;
+    background-color: #cfd6e3;
+    font-weight: bold;
+    font-size: 120%;
+}
+
+#instruction {
+    padding-top: 10px;
+}
+
+.bold {
+    font-weight: bold;
+    color: black;
 }
