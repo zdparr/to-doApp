@@ -16,21 +16,44 @@
         
         <input id="userInput" type="text" placeholder="i.e. pick up groceries">
         
-        <div id="listArea"></div>
+        <ul id="listArea"></ul>
         
         <script>
+            // Detect enter in input
             document.getElementById("userInput").addEventListener("keypress", handleEnter);
             
+            
+            // Group of ul
+            var listArea = document.getElementById("listArea");
+            
+            // Detect delete button
+            listArea.addEventListener("click", deleteTask);
+            
+            // Add task to task list
             function addTask() {
-                var newTask = document.createElement("div");
-                var newInput = document.createTextNode(document.getElementById("userInput").value);
                 
-                newTask.appendChild(newInput);
-                document.getElementById("listArea").appendChild(newTask);
+                // Get user input
+                var userInput = document.getElementById("userInput").value;
                 
+                // Create new li, add class, add input
+                var newTask = document.createElement("li");
+                newTask.className = 'listItem';
+                newTask.appendChild(document.createTextNode(userInput));
+                
+                // Add item to list
+                listArea.appendChild(newTask);
+                
+                // Clear input after enter
                 document.getElementById("userInput").value = "";
+                
+                // Add delete button
+                var deleteButton = document.createElement('button');
+                deleteButton.className = "btn deleteTask"
+                deleteButton.appendChild(document.createTextNode("X"));
+                newTask.appendChild(deleteButton);
             }
             
+            // Add tasks on enter
             function handleEnter(e) {
                 if (e.keyCode == 13) {
                     
@@ -38,6 +61,16 @@
                     
                 }
             }
+            
+            // Delete tasks
+            function deleteTask(e){
+                if (e.target.classList.contains("deleteTask")) {
+                    var item = e.target.parentElement;
+                    listArea.removeChild(item);
+                }
+            }
+            
+            
         </script>
         
     </body>
