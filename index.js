@@ -1,8 +1,4 @@
 // Store tasks in local storage
-            var taskArray = [];
-            
-            localStorage.setItem('tasks', JSON.stringify(taskArray));
-            var taskList = JSON.parse(localStorage.getItem('tasks'));
             
             // Detect enter in input
             document.getElementById("userInput").addEventListener("keypress", handleEnter);
@@ -24,8 +20,28 @@
                 
                 // Get user input
                 var userInput = document.getElementById("userInput").value;
+
+                // Save to local storage
+                var task = {
+                    name: userInput
+                }
                 
-                
+                if (localStorage.getItem("tasks") === null) {
+                    var tasks = [];
+
+                    tasks.push(task);
+
+                    localStorage.setItem("tasks", JSON.stringify(tasks));
+                } else {
+                    // Get tasks from local storage
+                    var tasks = JSON.parse(localStorage.getItem("tasks"));
+                    
+                    // Add new task
+                    tasks.push(task);
+
+                    // Save to local storage
+                    localStorage.setItem("tasks", JSON.stringify(tasks));
+                }
                 
                 // Create new div, add id, add class, add input
                 var newTask = document.createElement("div");
@@ -55,25 +71,24 @@
             function handleEnter(e) {
                 if (e.keyCode == 13) {
                     
-                    // Add task to local storage
-                    taskArray.push(userInput);
-                    localStorage.setItem('tasks', JSON.stringify(taskArray));
                     addTask();
                     
                 }
             }
             
-            // Delete tasks
+            // Mouse click functions
             function handleClick(e){
+                // Detect delete button click and remove item
                 if (e.target.classList.contains("deleteTask")) {
-                    var item = e.target.parentElement;
-                    listArea.removeChild(item);
+                    var deleteTask = e.target.parentElement;
+                    listArea.removeChild(deleteTask);
                 }
                 
+                //Detect task click and line through text
                 if (e.target.classList.contains("listItem")) {
                     var id = e.target.id;
-                    var task = document.getElementById(id);
-                    task.classList.add("strike");
+                    var completeTask = document.getElementById(id);
+                    completeTask.classList.add("strike");
                 }
                 
             }
