@@ -1,29 +1,35 @@
-// Store tasks in local storage
-
-// Detect enter in input
 document.getElementById("userInput").addEventListener("keypress", handleEnter);
 
-// List area
 var listArea = document.getElementById("listArea");
+var userInput = document.getElementById("userInput").value;
 
-// Detect complete button click
-listArea.addEventListener("click", handleClick);
+listArea.addEventListener("click", completeButtonClick);
 
-// Detect delete button click
-listArea.addEventListener("click", handleClick);
+listArea.addEventListener("click", deleteButtonClick);
 
-// Generate random number for task id
-function randomNumber() {
-  var randomNumber = Math.floor(Math.random() * 9000) + 1000;
-  return randomNumber;
+function randomNumberGenerator() {
+    return Math.floor(Math.random() * 9000) + 1000;
 }
 
-// Add task to task list
+function addText(userInput, newTask) {
+  var textButton = document.createElement("button");
+  textButton.className = "listItem task textButton";
+  textButton.id = "task" + randomNumberGenerator();
+  textButton.appendChild(document.createTextNode(userInput));
+  newTask.appendChild(textButton);
+}
+
+function addDelete(newTask) {
+  var deleteButton = document.createElement("button");
+  deleteButton.className = "deleteTask deleteButton";
+  deleteButton.appendChild(document.createTextNode("X"));
+  newTask.appendChild(deleteButton);
+}
+
 function addTask() {
-  // Get user input
+    
   var userInput = document.getElementById("userInput").value;
 
-  // Save to local storage
   var task = {
     name: userInput
   };
@@ -55,39 +61,29 @@ function addTask() {
   // Clear input after enter
   document.getElementById("userInput").value = "";
 
-  // Add text button
-  var textButton = document.createElement("button");
-  textButton.className = "listItem task textButton";
-  textButton.id = "task" + randomNumber();
-  textButton.appendChild(document.createTextNode(userInput));
-  newTask.appendChild(textButton);
+  addText(userInput, newTask);
 
-  // Add delete button
-  var deleteButton = document.createElement("button");
-  deleteButton.className = "deleteTask deleteButton";
-  deleteButton.appendChild(document.createTextNode("X"));
-  newTask.appendChild(deleteButton);
+  addDelete(newTask);
 }
 
-// Add tasks on enter
 function handleEnter(e) {
   if (e.keyCode == 13) {
     addTask();
   }
 }
 
-// Mouse click functions
-function handleClick(e) {
+function deleteButtonClick(e) {
   // Detect delete button click and remove item
   if (e.target.classList.contains("deleteTask")) {
     var deleteTask = e.target.parentElement;
     listArea.removeChild(deleteTask);
   }
+}
 
-  //Detect task click and line through text
-  if (e.target.classList.contains("listItem")) {
-    var id = e.target.id;
-    var completeTask = document.getElementById(id);
-    completeTask.classList.add("strike");
-  }
+function completeButtonClick(e) {
+    if (e.target.classList.contains("listItem")) {
+        var id = e.target.id;
+        var completeTask = document.getElementById(id);
+        completeTask.classList.add("strike");
+      }
 }
