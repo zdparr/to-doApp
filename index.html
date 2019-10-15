@@ -1,42 +1,40 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>To Do App</title>
-        
-        <!-- Local style sheet -->
-        <link rel="stylesheet" href="index.css">
-        
-        <!-- Bootstrap -->
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-        
-        <!-- Google font -->
-        <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed&display=swap" rel="stylesheet">
-                
-    </head>
-    
-    <body>
-        
-        <div class="container" id="wrapper">
-        
-            <div class="jumbotron">
-                <img id="logo" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQJqkj1a8l_dH215jHQQCz91Ov4w4KTLKB0ZSlie35p4AYs01SgRw">
-                
-                <h2 class="display-2" id="title">To Do App</h2>
-                
-            </div>
-            
-            <h4 class="text-muted" id="question">What do you need to do?</h4>
 
-            <input id="userInput" type="text" placeholder="i.e. pick up groceries">
-            
-            <p id="instruction" class="text-muted">Click the task to mark off the list. Click the <span class="bold">X</span> to delete.</p>
+<head>
+    <title>To Do App</title>
 
-            <div id="listArea"></div>
-        
+    <!-- Local style sheet -->
+    <link rel="stylesheet" href="index.css">
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+
+    <!-- Google font -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <div class="container" id="wrapper">
+        <div class="jumbotron">
+            <img id="logo"
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQJqkj1a8l_dH215jHQQCz91Ov4w4KTLKB0ZSlie35p4AYs01SgRw">
+            <h2 class="display-2" id="title">To Do App</h2>
         </div>
 
-        <script src="index.js"></script>
-        
-    </body>
+        <h4 class="text-muted" id="question">What do you need to do?</h4>
+        <input id="userInput" type="text" placeholder="i.e. pick up groceries">
+        <p id="instruction" class="text-muted">Click the task to mark off the list. Click the <span
+                class="bold">X</span> to delete.</p>
+        <div id="listArea"></div>
+    </div>
+
+    <script src="index.js"></script>
+</body>
+
 </html>
